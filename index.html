@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unique Studio | Photography & Visual Stories</title>
+  <meta name="description" content="Unique Studio captures weddings, events, portraits, fashion and brand stories with a creative eye.">
+  <meta name="theme-color" content="#171d2b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --ink:#171d2b; --ink-soft:#273044; --paper:#f7f5f0; --white:#fff;
+      --muted:#777d88; --line:#e8e4dc; --lime:#d8f36a; --coral:#d77c60;
+      --serif:'Playfair Display',Georgia,serif; --sans:'DM Sans',sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{font-family:var(--sans);background:var(--paper);color:var(--ink);overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    button,input,select,textarea{font:inherit}
+    img{display:block;max-width:100%}
+    .container{width:min(1160px,calc(100% - 44px));margin:auto}
+    .site-header{position:sticky;top:0;z-index:1000;background:rgba(247,245,240,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .header-inner{height:82px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-mark{width:43px;height:43px;display:grid;place-items:center;background:var(--ink);color:var(--lime);font-family:var(--serif);font-size:25px;border-radius:50% 50% 8px 50%}
+    .brand-name{font-family:var(--serif);font-size:23px;font-weight:700;letter-spacing:-.5px}
+    .brand-name span{color:var(--coral)}
+    .brand-tag{display:block;margin-top:2px;font-size:8px;letter-spacing:2.1px;color:var(--muted);font-weight:700}
+    .desktop-nav{display:flex;align-items:center;gap:27px}
+    .desktop-nav a{font-size:12px;font-weight:700;color:#515967;transition:.2s}
+    .desktop-nav a:hover{color:var(--coral)}
+    .nav-cta{background:var(--ink);color:#fff!important;padding:13px 19px;border-radius:3px 15px 3px 15px}
+    .nav-cta:hover{background:var(--coral);color:#fff!important}
+    .menu-toggle{display:none;border:0;background:var(--ink);color:white;width:43px;height:43px;border-radius:50%;font-size:17px}
+    .mobile-nav{display:none}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--coral)}
+    .eyebrow:before{content:"";width:25px;height:1px;background:currentColor}
+
+    /* HERO — intentionally retained from the supplied design */
+    .hero{text-align:left;position:relative;overflow:hidden;background:#172638;border-radius:5px 55px 5px 55px;padding:62px 7%;margin:35px 0 48px;color:#fff}
+    .hero:after{content:'S';position:absolute;right:5%;top:-95px;font-family:Georgia,serif;font-size:340px;line-height:1;color:rgba(255,255,255,.045);pointer-events:none}
+    .hero-label{position:relative;z-index:1;display:inline-block;background:rgba(213,176,139,.15);color:#e7c7a7;border:1px solid rgba(213,176,139,.35);border-radius:2px;letter-spacing:2px;text-transform:uppercase;font-size:10px;padding:9px 15px}
+    .hero h1{position:relative;z-index:1;color:#fff;font-family:Georgia,'Times New Roman',serif;font-weight:500;font-size:clamp(36px,5vw,60px);line-height:1.12;max-width:760px;letter-spacing:-1.2px;margin-top:18px}
+    .hero h1 span{color:#d5b08b}
+    .hero p{position:relative;z-index:1;margin:20px 0 5px;color:#d1d9df;max-width:660px;font-size:14px;line-height:1.9}
+    .hero-btn{position:relative;z-index:1;display:inline-flex;align-items:center;gap:10px;margin-top:12px;background:#b8794d;color:#fff;border-radius:3px;padding:14px 25px;text-transform:uppercase;letter-spacing:1px;font-size:11px;font-weight:700}
+    .hero-btn:hover{background:#d5b08b;color:#172638}
+
+    .intro-strip{display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center;padding:28px 0 40px;border-bottom:1px solid var(--line)}
+    .intro-strip p{max-width:690px;color:#5e6672;font-size:14px;line-height:1.9}
+    .intro-number{font-family:var(--serif);font-size:38px;color:var(--coral);white-space:nowrap}
+    .intro-number small{display:block;font:700 9px var(--sans);letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:right}
+    .section{padding:88px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:34px}
+    .section-title{font:600 clamp(32px,4vw,48px)/1.1 var(--serif);letter-spacing:-1px;margin-top:12px}
+    .section-copy{max-width:360px;color:var(--muted);font-size:13px;line-height:1.8}
+    .services-layout{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .service-card{min-height:210px;padding:23px 18px;background:#fff;border:1px solid var(--line);position:relative;overflow:hidden;transition:.25s}
+    .service-card:nth-child(even){background:#efebe3}
+    .service-card:hover{transform:translateY(-6px);border-color:var(--coral);box-shadow:0 15px 35px #171d2b12}
+    .service-icon{width:43px;height:43px;display:grid;place-items:center;background:var(--ink);color:var(--lime);border-radius:50%;font-size:17px;margin-bottom:30px}
+    .service-card h3{font:600 18px var(--serif);margin-bottom:9px}
+    .service-card p{font-size:11px;line-height:1.7;color:var(--muted)}
+    .service-index{position:absolute;right:16px;top:17px;color:#c7c1b7;font-size:10px;font-weight:700;letter-spacing:1px}
+
+    .gallery-section{background:var(--ink);color:#fff;padding:88px 0}
+    .gallery-section .section-copy{color:#b8bfca}
+    .gallery-section .eyebrow{color:var(--lime)}
+    .gallery-grid{display:grid;grid-template-columns:1.15fr .85fr .85fr;grid-template-rows:220px 220px;gap:13px}
+    .gallery-tile{position:relative;overflow:hidden;background:#30394a;min-height:190px}
+    .gallery-tile:first-child{grid-row:span 2}
+    .gallery-tile img{width:100%;height:100%;object-fit:cover;opacity:.78;transition:.5s}
+    .gallery-tile:hover img{transform:scale(1.06);opacity:.95}
+    .gallery-tile:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,#101723d9)}
+    .gallery-caption{position:absolute;z-index:1;left:20px;bottom:18px}
+    .gallery-caption strong{display:block;font:600 20px var(--serif)}
+    .gallery-caption span{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#d8f36a}
+
+    .pricing-wrap{background:#ece8df;padding:75px 0}
+    .pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+    .price-card{background:#fff;padding:27px 21px;border:1px solid #e1dbd0;position:relative}
+    .price-card.featured{background:var(--ink);color:#fff;border-color:var(--ink);transform:translateY(-10px)}
+    .price-card .plan-tag{font-size:9px;letter-spacing:1.6px;text-transform:uppercase;color:var(--coral);font-weight:700}
+    .price-card h3{font:600 22px var(--serif);margin:12px 0}
+    .price{font:600 34px var(--serif);color:var(--coral);margin:17px 0}
+    .price-card p{font-size:11px;color:var(--muted);line-height:1.8;padding:10px 0;border-top:1px solid var(--line)}
+    .price-card.featured p{color:#c4cad2;border-color:#3a4559}
+    .price-card.featured h3{color:white}
+    .price-card .book-btn{width:100%;border:0;background:var(--ink);color:#fff;padding:13px 10px;margin-top:20px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
+    .price-card.featured .book-btn{background:var(--lime);color:var(--ink)}
+    .price-card .book-btn:hover{background:var(--coral);color:#fff}
+
+    .testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .testimonial{background:#fff;padding:27px;border:1px solid var(--line);border-radius:2px 28px 2px 2px}
+    .quote-mark{font:50px/1 var(--serif);color:var(--coral)}
+    .stars{color:#c58c3d;font-size:12px;letter-spacing:3px;margin:10px 0}
+    .testimonial blockquote{font:500 16px/1.75 var(--serif);color:#3d4653}
+    .client{display:flex;align-items:center;gap:11px;margin-top:22px}
+    .client-avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#e9e3d8;color:var(--ink)}
+    .client strong{display:block;font-size:11px}
+    .client small{font-size:9px;color:var(--muted)}
+
+    .contact-band{background:var(--coral);color:#fff;padding:55px 0}
+    .contact-inner{display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .contact-inner h2{font:600 clamp(30px,4vw,45px)/1.15 var(--serif);max-width:650px}
+    .contact-inner p{font-size:12px;color:#fff1eb;margin-top:12px}
+    .contact-action{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;padding:16px 22px;font-size:11px;font-weight:700;white-space:nowrap}
+    .contact-action:hover{background:#fff;color:var(--ink)}
+    .details-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:25px}
+    .detail-card{background:#fff;border:1px solid var(--line);padding:28px}
+    .detail-card h3{font:600 23px var(--serif);margin-bottom:18px}
+    .detail-card p{font-size:12px;line-height:2;color:#66707d}
+    .detail-card i{color:var(--coral);width:22px}
+
+    .inquiry{background:#fff;border:1px solid var(--line);padding:38px;margin-top:35px}
+    .inquiry h2{font:600 34px var(--serif);margin-bottom:8px}
+    .inquiry .hint{font-size:12px;color:var(--muted);margin-bottom:25px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .field{display:flex;flex-direction:column;gap:7px}
+    .field.full{grid-column:1/-1}
+    .field label{font-size:11px;font-weight:700;color:#4d5664}
+    .field input,.field select,.field textarea{width:100%;border:1px solid #e1ddd5;background:#faf9f6;padding:13px 14px;outline:0;font-size:13px;color:var(--ink);border-radius:2px}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--coral);box-shadow:0 0 0 3px #d77c6018}
+    .submit-btn{grid-column:1/-1;border:0;background:var(--ink);color:#fff;padding:15px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
+    .submit-btn:hover{background:var(--coral)}
+    .form-status{display:none;margin-top:14px;padding:13px;background:#edf5df;color:#34431c;font-size:12px}
+    .disclaimer{margin:28px 0 0;padding:18px;background:#eeeae2;color:#777d85;font-size:10px;line-height:1.8;text-align:center}
+
+    .site-footer{background:#111722;color:#d6dbe2;padding:65px 0 22px}
+    .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:35px}
+    .footer-brand{font:600 25px var(--serif);color:#fff}
+    .footer-brand span{color:var(--coral)}
+    .footer-about p{font-size:11px;line-height:1.9;color:#9da6b3;margin-top:15px;max-width:250px}
+    .footer-col h3{font-size:11px;color:#fff;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:18px}
+    .footer-col a,.footer-col p{display:block;font-size:11px;color:#aeb6c1;margin-bottom:12px;line-height:1.6}
+    .footer-col a:hover{color:var(--lime)}
+    .socials{display:flex;gap:8px;margin-top:15px}
+    .socials a{width:34px;height:34px;border:1px solid #384150;display:grid;place-items:center;border-radius:50%;color:#fff}
+    .socials a:hover{background:var(--coral);border-color:var(--coral)}
+    .copyright{border-top:1px solid #303846;margin-top:42px;padding-top:20px;text-align:center;color:#8993a1;font-size:10px}
+    .floating-wa{position:fixed;right:22px;bottom:22px;z-index:900;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:white;font-size:25px;box-shadow:0 8px 25px #0003}
+    .floating-wa:hover{transform:translateY(-3px)}
+    @media(max-width:950px){
+      .desktop-nav{gap:15px}.desktop-nav a{font-size:11px}
+      .services-layout{grid-template-columns:repeat(3,1fr)}
+      .pricing-grid{grid-template-columns:repeat(2,1fr)}
+      .price-card.featured{transform:none}
+      .footer-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:700px){
+      .container{width:min(100% - 30px,560px)}
+      .header-inner{height:72px}
+      .desktop-nav{display:none}
+      .menu-toggle{display:block}
+      .mobile-nav{position:absolute;display:block;top:72px;left:0;width:100%;background:var(--paper);padding:0 22px;max-height:0;overflow:hidden;transition:max-height .3s ease;border-bottom:0 solid var(--line)}
+      .mobile-nav.open{max-height:430px;padding:12px 22px 20px;border-bottom:1px solid var(--line)}
+      .mobile-nav a{display:block;padding:12px 4px;border-bottom:1px solid var(--line);font-size:12px;font-weight:700;color:#505967}
+      .hero{padding:38px 23px;border-radius:4px 32px 4px 32px;margin:22px 0 30px}
+      .hero:after{font-size:220px;right:-2%;top:-45px}
+      .hero h1{font-size:35px;max-width:100%}
+      .hero p{font-size:13px;line-height:1.75}
+      .hero-btn{width:100%;max-width:280px;justify-content:center;font-size:10px}
+      .intro-strip{grid-template-columns:1fr;gap:15px;padding:20px 0 28px}
+      .intro-strip p{font-size:12px}
+      .intro-number{font-size:30px}.intro-number small{text-align:left}
+      .section{padding:62px 0}
+      .section-head{display:block;margin-bottom:25px}
+      .section-title{font-size:34px}
+      .section-copy{margin-top:13px;font-size:12px}
+      .services-layout{grid-template-columns:repeat(2,1fr);gap:9px}
+      .service-card{min-height:190px;padding:18px 13px}
+      .service-icon{margin-bottom:24px;width:38px;height:38px}
+      .service-card h3{font-size:16px}
+      .service-card p{font-size:10px}
+      .gallery-section,.pricing-wrap{padding:62px 0}
+      .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:190px 150px 150px;gap:8px}
+      .gallery-tile:first-child{grid-column:span 2;grid-row:auto}
+      .gallery-caption{left:13px;bottom:12px}
+      .gallery-caption strong{font-size:17px}
+      .pricing-grid{gap:9px}
+      .price-card{padding:20px 14px}
+      .price-card h3{font-size:19px}
+      .price{font-size:29px}
+      .price-card p{font-size:10px}
+      .testimonial-grid{grid-template-columns:1fr;gap:10px}
+      .testimonial{padding:22px}
+      .contact-inner{display:block}
+      .contact-inner h2{font-size:34px}
+      .contact-action{margin-top:22px}
+      .details-grid{grid-template-columns:1fr;gap:10px}
+      .detail-card{padding:23px}
+      .inquiry{padding:25px 17px}
+      .inquiry h2{font-size:28px}
+      .form-grid{grid-template-columns:1fr;gap:13px}
+      .field.full,.submit-btn{grid-column:1}
+      .field input,.field select,.field textarea{font-size:16px}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:28px 16px}
+      .footer-about{grid-column:1/-1}
+      .copyright{line-height:1.8}
+      .floating-wa{right:14px;bottom:14px;width:49px;height:49px}
+    }
+    @media(max-width:370px){
+      .brand-name{font-size:20px}.brand-tag{font-size:7px;letter-spacing:1.5px}
+      .services-layout,.pricing-grid{grid-template-columns:1fr}
+      .service-card{min-height:160px}
+      .gallery-grid{grid-template-rows:170px 135px 135px}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <span class="brand-mark">U</span>
+        <span><span class="brand-name">Unique <span>Studio</span></span><span class="brand-tag">PHOTOGRAPHY & VISUAL STORIES</span></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#services">Services</a><a href="#gallery">Portfolio</a><a href="#pricing">Packages</a><a href="#reviews">Stories</a><a href="#contact" class="nav-cta">Let's Talk <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+      <a href="#services">Services</a><a href="#gallery">Portfolio</a><a href="#pricing">Packages</a><a href="#reviews">Client Stories</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- HERO: same headline, description, label and CTA as the supplied page -->
+    <section class="hero" aria-label="Introduction">
+      <span class="hero-label"><i class="fas fa-camera"></i> Professional Photography Studio</span>
+      <h1>Capture <span>Moments</span> That Last Forever</h1>
+      <p>Award-winning photography studio specialized in weddings, events, fashion, and corporate media. Creating beautiful memories through professional photography and creative storytelling.</p>
+      <a href="#" data-whatsapp-link class="hero-btn"><i class="fab fa-whatsapp"></i> Book Your Shoot</a>
+    </section>
+
+    <div class="intro-strip">
+      <p>At Unique Studio, we turn fleeting moments into photographs you can return to for a lifetime. From intimate celebrations to bold brand campaigns, every frame is created with intention.</p>
+      <div class="intro-number">01 — 10<small>Stories. People. Moments.</small></div>
+    </div>
+
+    <section class="section" id="services">
+      <div class="section-head">
+        <div><span class="eyebrow">What we create</span><h2 class="section-title">A frame for every<br>kind of story.</h2></div>
+        <p class="section-copy">Thoughtful photography, personal direction and careful editing — made around your occasion, personality and vision.</p>
+      </div>
+      <div class="services-layout">
+        <article class="service-card"><span class="service-index">01</span><div class="service-icon"><i class="fa-solid fa-ring"></i></div><h3>Weddings</h3><p>Honest emotions and all the little details of your day.</p></article>
+        <article class="service-card"><span class="service-index">02</span><div class="service-icon"><i class="fa-solid fa-heart"></i></div><h3>Couples</h3><p>Pre-wedding, engagement and connection-led sessions.</p></article>
+        <article class="service-card"><span class="service-index">03</span><div class="service-icon"><i class="fa-solid fa-cake-candles"></i></div><h3>Celebrations</h3><p>Birthdays, anniversaries and meaningful gatherings.</p></article>
+        <article class="service-card"><span class="service-index">04</span><div class="service-icon"><i class="fa-solid fa-user"></i></div><h3>Portraits</h3><p>Personal portraits, headshots and creative profiles.</p></article>
+        <article class="service-card"><span class="service-index">05</span><div class="service-icon"><i class="fa-solid fa-box-open"></i></div><h3>Products</h3><p>Clean, detailed imagery for shops and campaigns.</p></article>
+        <article class="service-card"><span class="service-index">06</span><div class="service-icon"><i class="fa-solid fa-shirt"></i></div><h3>Fashion</h3><p>Editorials, lookbooks and campaign photography.</p></article>
+        <article class="service-card"><span class="service-index">07</span><div class="service-icon"><i class="fa-solid fa-baby"></i></div><h3>Baby & Maternity</h3><p>Gentle sessions for new beginnings and milestones.</p></article>
+        <article class="service-card"><span class="service-index">08</span><div class="service-icon"><i class="fa-solid fa-mountain-sun"></i></div><h3>Outdoor</h3><p>Natural-light portraits and location-based shoots.</p></article>
+        <article class="service-card"><span class="service-index">09</span><div class="service-icon"><i class="fa-solid fa-building"></i></div><h3>Corporate</h3><p>Team portraits, conferences and company events.</p></article>
+        <article class="service-card"><span class="service-index">10</span><div class="service-icon"><i class="fa-solid fa-clapperboard"></i></div><h3>Creative Media</h3><p>Visual content for people, projects and brands.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-head">
+        <div><span class="eyebrow">Selected moments</span><h2 class="section-title">The art of<br>seeing differently.</h2></div>
+        <p class="section-copy">A glimpse into the stories we love to tell. Replace these sample photos with your own portfolio images.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-tile"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1100&q=85" alt="Wedding couple"><div class="gallery-caption"><span>01 / Celebration</span><strong>Wedding Stories</strong></div></div>
+        <div class="gallery-tile"><img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=85" alt="Couple portrait"><div class="gallery-caption"><span>02 / Connection</span><strong>Couple Portraits</strong></div></div>
+        <div class="gallery-tile"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85" alt="Studio portrait"><div class="gallery-caption"><span>03 / Character</span><strong>Portrait Sessions</strong></div></div>
+        <div class="gallery-tile"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85" alt="Fashion editorial"><div class="gallery-caption"><span>04 / Expression</span><strong>Fashion Frames</strong></div></div>
+        <div class="gallery-tile"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=85" alt="Live event"><div class="gallery-caption"><span>05 / Energy</span><strong>Live Events</strong></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-wrap" id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <div><span class="eyebrow">Simple collections</span><h2 class="section-title">Choose your<br>kind of coverage.</h2></div>
+        <p class="section-copy">Every occasion is different. Start with a collection and we can tailor the details to your requirements.</p>
+      </div>
+      <div class="pricing-grid">
+        <article class="price-card"><span class="plan-tag">01 / Essential</span><h3>Basic Package</h3><div class="price">$399</div><p>3 hours of coverage</p><p>50 edited photographs</p><p>Online digital gallery</p><p>7-day delivery</p><button class="book-btn" data-package="Basic Package">Enquire now ↗</button></article>
+        <article class="price-card featured"><span class="plan-tag">02 / Most chosen</span><h3>Standard Package</h3><div class="price">$799</div><p>6 hours of coverage</p><p>120 edited photographs</p><p>Print rights + album</p><p>5-day delivery</p><button class="book-btn" data-package="Standard Package">Enquire now ↗</button></article>
+        <article class="price-card"><span class="plan-tag">03 / Signature</span><h3>Premium Package</h3><div class="price">$1299</div><p>10 hours of coverage</p><p>250+ edited photographs</p><p>Luxury album + canvas</p><p>3-day delivery</p><button class="book-btn" data-package="Premium Package">Enquire now ↗</button></article>
+        <article class="price-card"><span class="plan-tag">04 / Made for you</span><h3>Custom Package</h3><div class="price">Custom</div><p>Flexible coverage hours</p><p>Personalised editing</p><p>Optional rush delivery</p><p>Discuss your requirements</p><button class="book-btn" data-package="Custom Package">Enquire now ↗</button></article>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="section" id="reviews">
+      <div class="section-head"><div><span class="eyebrow">Kind words</span><h2 class="section-title">Good memories.<br>Lovely people.</h2></div><p class="section-copy">The best part of our work is hearing how a photograph brings someone right back to a moment.</p></div>
+      <div class="testimonial-grid">
+        <article class="testimonial"><div class="quote-mark">“</div><div class="stars">★★★★★</div><blockquote>Every photograph feels natural and full of emotion. The team made our wedding day so comfortable.</blockquote><div class="client"><span class="client-avatar"><i class="fa-solid fa-user"></i></span><span><strong>Sarah & Michael</strong><small>Wedding clients</small></span></div></article>
+        <article class="testimonial"><div class="quote-mark">“</div><div class="stars">★★★★★</div><blockquote>Our portraits came out beautifully. The direction, attention to detail and final edits were excellent.</blockquote><div class="client"><span class="client-avatar"><i class="fa-solid fa-user"></i></span><span><strong>Priya & Raj</strong><small>Couple session</small></span></div></article>
+        <article class="testimonial"><div class="quote-mark">“</div><div class="stars">★★★★★</div><blockquote>Professional from the first conversation to delivery. We loved the photographs from our company event.</blockquote><div class="client"><span class="client-avatar"><i class="fa-solid fa-building"></i></span><span><strong>TechVision Team</strong><small>Corporate event</small></span></div></article>
+      </div>
+    </section>
+  </main>
+
+  <section class="contact-band" id="contact">
+    <div class="container contact-inner">
+      <div><h2>Have a moment in mind?<br>Let's make it unforgettable.</h2><p>Tell us what you're planning. We'll help you shape the shoot.</p></div>
+      <a class="contact-action" href="#" data-whatsapp-link><i class="fab fa-whatsapp"></i> START A CONVERSATION</a>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="details-grid">
+      <article class="detail-card"><h3>Get in touch</h3><p><i class="fab fa-whatsapp"></i><strong> WhatsApp:</strong> +91 92594 41461</p><p><i class="fas fa-phone"></i><strong> Phone:</strong> +1 (555) 678-1234</p><p><i class="fas fa-envelope"></i><strong> Email:</strong> hello@uniquestudio.example</p><p><i class="fas fa-clock"></i><strong> Hours:</strong> Mon–Sat, 9 AM–6 PM</p></article>
+      <article class="detail-card"><h3>Studio information</h3><p><i class="fas fa-location-dot"></i> Studio address can be added here.</p><p><i class="fas fa-camera"></i> Sessions available by appointment.</p><p><i class="fas fa-calendar-check"></i> Please contact us to confirm availability and location.</p></article>
+    </div>
+
+    <section class="inquiry" id="inquiry">
+      <h2>Let's plan your shoot.</h2><p class="hint">Share a few details and we'll get back to you.</p>
+      <form id="inquiryForm" class="form-grid">
+        <div class="field"><label for="fullName">Full name *</label><input id="fullName" type="text" placeholder="Your name" required></div>
+        <div class="field"><label for="mobile">Mobile number *</label><input id="mobile" type="tel" placeholder="Your contact number" required></div>
+        <div class="field"><label for="email">Email address *</label><input id="email" type="email" placeholder="you@example.com" required></div>
+        <div class="field"><label for="eventType">Type of shoot</label><select id="eventType"><option>Wedding</option><option>Pre-wedding / Couple</option><option>Birthday / Event</option><option>Corporate</option><option>Fashion</option><option>Portrait</option><option>Product</option><option>Other</option></select></div>
+        <div class="field"><label for="eventDate">Preferred date</label><input id="eventDate" type="date"></div>
+        <div class="field"><label for="budget">Estimated budget</label><input id="budget" type="text" placeholder="Your budget"></div>
+        <div class="field full"><label for="location">Location / venue</label><input id="location" type="text" placeholder="City or venue"></div>
+        <div class="field full"><label for="message">Tell us about your idea</label><textarea id="message" rows="4" placeholder="Share any details or special requests..."></textarea></div>
+        <button class="submit-btn" type="submit"><i class="fa-solid fa-paper-plane"></i> Send enquiry on WhatsApp</button>
+      </form>
+      <div class="form-status" id="formStatus" role="status"></div>
+    </section>
+    <div class="disclaimer"><strong>Note:</strong> Package prices and sample testimonials are demonstration content. Update them with your actual business information before publishing. The contact form opens WhatsApp and does not store submissions on a server.</div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about"><div class="footer-brand">Unique <span>Studio</span></div><p>Photography with feeling, creativity and a focus on the details that make every story yours.</p><div class="socials"><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" data-whatsapp-link aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a><a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a></div></div>
+        <div class="footer-col"><h3>Explore</h3><a href="#services">Services</a><a href="#gallery">Portfolio</a><a href="#pricing">Packages</a><a href="#reviews">Client stories</a></div>
+        <div class="footer-col"><h3>Information</h3><a href="#contact">Contact</a><a href="#">Privacy policy</a><a href="#">Terms & conditions</a><a href="#">Cancellation policy</a></div>
+        <div class="footer-col"><h3>Get in touch</h3><p>WhatsApp: +91 92594 41461</p><p>Email: hello@uniquestudio.example</p><a href="#" data-whatsapp-link>Message our team ↗</a></div>
+      </div>
+      <div class="copyright">© 2026 Unique Studio. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <a href="#" data-whatsapp-link class="floating-wa" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+  <script>
+    // Update these two values with your business WhatsApp details.
+    const WHATSAPP_NUMBER = "919259441461";
+    const WHATSAPP_MESSAGE = "Hello Unique Studio! I would like to enquire about a photography shoot.";
+    const makeWhatsAppLink = (message = WHATSAPP_MESSAGE) =>
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+    document.querySelectorAll("[data-whatsapp-link]").forEach(link => {
+      link.href = makeWhatsAppLink();
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    });
+
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileNav = document.getElementById("mobileNav");
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mobileNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+    mobileNav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      mobileNav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    }));
+
+    document.querySelectorAll(".book-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        const packageName = button.dataset.package;
+        const message = `Hello Unique Studio! I am interested in the ${packageName}. Please share more details.`;
+        window.open(makeWhatsAppLink(message), "_blank", "noopener");
+      });
+    });
+
+    document.getElementById("inquiryForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const name = document.getElementById("fullName").value.trim();
+      const mobile = document.getElementById("mobile").value.trim();
+      const email = document.getElementById("email").value.trim();
+      if (!name || !mobile || !email) return;
+
+      const details = [
+        "Hello Unique Studio! I would like to enquire about a shoot.",
+        `Name: ${name}`,
+        `Mobile: ${mobile}`,
+        `Email: ${email}`,
+        `Shoot type: ${document.getElementById("eventType").value}`,
+        `Preferred date: ${document.getElementById("eventDate").value || "Not specified"}`,
+        `Budget: ${document.getElementById("budget").value || "Not specified"}`,
+        `Location: ${document.getElementById("location").value || "Not specified"}`,
+        `Message: ${document.getElementById("message").value || "Not specified"}`
+      ].join("\n");
+
+      document.getElementById("formStatus").style.display = "block";
+      document.getElementById("formStatus").textContent = "Opening WhatsApp with your enquiry. Please press Send in WhatsApp to submit it.";
+      window.open(makeWhatsAppLink(details), "_blank", "noopener");
+    });
+  </script>
+</body>
+</html>
